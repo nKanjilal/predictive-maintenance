@@ -1,0 +1,136 @@
+{
+  "baseline": "Logistic Regression (baseline)",
+  "best_model": "XGBoost",
+  "f1_gain_points": 49.30074039252556,
+  "comparison": {
+    "Logistic Regression (baseline)": {
+      "threshold": 0.879,
+      "accuracy": 0.958,
+      "precision": 0.3788,
+      "recall": 0.3676,
+      "f1": 0.3731,
+      "pr_auc": 0.3817,
+      "roc_auc": 0.9069
+    },
+    "Logistic Regression + engineered features": {
+      "threshold": 0.922,
+      "accuracy": 0.9675,
+      "precision": 0.5319,
+      "recall": 0.3676,
+      "f1": 0.4348,
+      "pr_auc": 0.4297,
+      "roc_auc": 0.9385
+    },
+    "Random Forest": {
+      "threshold": 0.487,
+      "accuracy": 0.9925,
+      "precision": 0.9492,
+      "recall": 0.8235,
+      "f1": 0.8819,
+      "pr_auc": 0.8844,
+      "roc_auc": 0.9851
+    },
+    "XGBoost": {
+      "threshold": 0.82,
+      "accuracy": 0.9915,
+      "precision": 0.9322,
+      "recall": 0.8088,
+      "f1": 0.8661,
+      "pr_auc": 0.8855,
+      "roc_auc": 0.9855
+    }
+  },
+  "default_threshold_results": {
+    "Logistic Regression (baseline)": {
+      "threshold": 0.5,
+      "accuracy": 0.825,
+      "precision": 0.14213197969543148,
+      "recall": 0.8235294117647058,
+      "f1": 0.24242424242424243,
+      "pr_auc": 0.38170307203718523,
+      "roc_auc": 0.9069464742418707
+    },
+    "Logistic Regression + engineered features": {
+      "threshold": 0.5,
+      "accuracy": 0.8595,
+      "precision": 0.18018018018018017,
+      "recall": 0.8823529411764706,
+      "f1": 0.29925187032418954,
+      "pr_auc": 0.42965888917832457,
+      "roc_auc": 0.9384666910242359
+    },
+    "Random Forest": {
+      "threshold": 0.5,
+      "accuracy": 0.9925,
+      "precision": 0.9491525423728814,
+      "recall": 0.8235294117647058,
+      "f1": 0.8818897637795275,
+      "pr_auc": 0.8843595552332423,
+      "roc_auc": 0.9850886006576542
+    },
+    "XGBoost": {
+      "threshold": 0.5,
+      "accuracy": 0.9875,
+      "precision": 0.8115942028985508,
+      "recall": 0.8235294117647058,
+      "f1": 0.8175182481751825,
+      "pr_auc": 0.8855286162528,
+      "roc_auc": 0.9854920228961149
+    }
+  },
+  "operations": {
+    "model": "XGBoost",
+    "alert_threshold": 0.13,
+    "assumptions": {
+      "cost_missed_failure": 10000,
+      "cost_per_alert": 500
+    },
+    "test_failures": 68,
+    "caught": 62,
+    "missed": 6,
+    "false_alarms": 67,
+    "alerts": 129,
+    "recall": 0.9117647058823529,
+    "precision": 0.4806201550387597,
+    "alerts_per_1000_cycles": 64.5,
+    "cost_with_model": 124500,
+    "cost_run_to_failure": 680000,
+    "savings_pct": 0.8169117647058823,
+    "confusion_matrix": [
+      [
+        1865,
+        67
+      ],
+      [
+        6,
+        62
+      ]
+    ],
+    "caught_by_failure_mode": {
+      "TWF": {
+        "failures": 10,
+        "caught": 6
+      },
+      "HDF": {
+        "failures": 29,
+        "caught": 29
+      },
+      "PWF": {
+        "failures": 13,
+        "caught": 13
+      },
+      "OSF": {
+        "failures": 16,
+        "caught": 16
+      },
+      "RNF": {
+        "failures": 0,
+        "caught": 0
+      },
+      "unlabeled": {
+        "failures": 2,
+        "caught": 0
+      }
+    }
+  }
+}

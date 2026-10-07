@@ -1,0 +1,5 @@
+,threshold,accuracy,precision,recall,f1,pr_auc,roc_auc
+Logistic Regression (baseline),0.8790,0.9580,0.3788,0.3676,0.3731,0.3817,0.9069
+Logistic Regression + engineered features,0.9220,0.9675,0.5319,0.3676,0.4348,0.4297,0.9385
+Random Forest,0.4870,0.9925,0.9492,0.8235,0.8819,0.8844,0.9851
+XGBoost,0.8200,0.9915,0.9322,0.8088,0.8661,0.8855,0.9855
