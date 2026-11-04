@@ -1,5 +1,7 @@
 # Predictive Maintenance: Machine Failure Prediction
 
+[![CI](https://github.com/nKanjilal/predictive-maintenance/actions/workflows/ci.yml/badge.svg)](https://github.com/nKanjilal/predictive-maintenance/actions/workflows/ci.yml)
+
 Predicts whether a milling machine is about to fail from five sensor readings, then turns the model into a maintenance alert policy that a plant could actually run.
 
 **Data:** [AI4I 2020 Predictive Maintenance Dataset](https://archive.ics.uci.edu/dataset/601) (UCI) — 10,000 machine cycles, 339 failures (3.4%).
@@ -80,7 +82,17 @@ pip install -r requirements.txt
 python src/eda.py        # charts → reports/figures/
 python src/train.py      # models, metrics → reports/, model → models/model.joblib
 streamlit run app.py     # interactive risk calculator
+pytest -v                # data quality, feature, and model tests
 ```
+
+## Testing & CI
+
+Every push and pull request to `main` runs a GitHub Actions workflow (`.github/workflows/ci.yml`) that installs the dependencies and runs the test suite in `tests/`. The tests check:
+
+- **Data quality:** expected row count and columns, no missing model inputs, sensor values in physical ranges, and the failure rate staying near 3.4%
+- **Feature engineering:** temperature difference, power, and strain match their formulas, and no failure labels leak into the model inputs
+- **Model:** the saved model loads, returns valid probabilities, and scores an overstrained machine as riskier than a normal one
+- **Reported results:** the metrics in `reports/metrics.json` still meet the recall and precision targets
 
 ## Repo layout
 
@@ -91,6 +103,8 @@ src/eda.py                   exploratory charts
 src/train.py                 imbalance handling, model comparison, drivers, alert threshold
 app.py                       Streamlit app: sensor readings in, failure risk out
 models/model.joblib          trained XGBoost model + alert threshold
+tests/test_pipeline.py       automated data, feature, and model tests
+.github/workflows/ci.yml     GitHub Actions CI: runs the tests on every push and pull request
 reports/metrics.json         all metrics
 reports/*.csv                model comparison, feature importance, threshold trade-off
 reports/figures/             charts
